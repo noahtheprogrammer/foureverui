@@ -41,3 +41,54 @@ function loadStatistics() {
             });
         });
     }
+
+function loadChart(id) {
+    return $.ajax(API + 'pools/' + current + '/performance')
+        .done(function (data) {
+            connectedMiners = [];
+            networkHashRate = [];
+            networkDifficulty = [];
+            poolHashRate = [];
+            $.each(data.stats, function (index, value) {
+                networkHashRate.push(value.networkHashrate);
+                poolHashRate.push(value.poolHashrate);
+                connectedMiners.push(value.connectedMiners);
+                networkDifficulty.push(value.networkDifficulty);
+            });
+
+            const ctx = document.getElementById(id);
+            const info = '';
+
+             if (ctx == 'poolhr_chart') {
+                 info = poolHashRate;
+             }
+        
+             else if (ctx == 'workers_chart') {
+                 info = connectedMiners;
+             }
+        
+             else if (ctx == 'globalhr_chart') {
+                 info = networkHashRate;
+             }
+        
+             else if (ctx == 'globaldiff_chart') {
+                 info = networkDifficulty;
+             }
+        
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+        
+                    datasets: [{
+                        label: '',
+                        data: [
+                            info
+                        ],
+                        backgroundColor: 'rgb(20,20,20, 0.2)',
+                        borderWidth: 0,
+                        fill: true
+                    }]
+                },
+            });
+        })
+     }

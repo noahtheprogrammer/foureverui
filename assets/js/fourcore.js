@@ -2,7 +2,7 @@
 var API = 'https://4rtm.com/api/';
 
 // This value can be entered as null whenever the API points to the proper JSON by default
-var current = '';
+var current = 'Raptoreum-TESTNET';
 
 // Function used to format statistics depending on size of variable
 function formatSymbol(value, decimal, unit) {
@@ -42,53 +42,62 @@ function loadStatistics() {
         });
     }
 
-function loadChart(id) {
-    return $.ajax(API + 'pools/' + current + '/performance')
-        .done(function (data) {
-            connectedMiners = [];
-            networkHashRate = [];
-            networkDifficulty = [];
-            poolHashRate = [];
-            $.each(data.stats, function (index, value) {
-                networkHashRate.push(value.networkHashrate);
-                poolHashRate.push(value.poolHashrate);
-                connectedMiners.push(value.connectedMiners);
-                networkDifficulty.push(value.networkDifficulty);
+    function loadPoolStatistics() {
+        return $.ajax(API + 'pools/' + current + '/performance')
+            .done(function (data) {
+                let new_chart_labels = [];
+                let new_chart_data = [];
+                $.each(data.stats, function (index, value) {
+                    new_chart_data.push(value.poolHashrate);
+                    new_chart_labels.push(value.created);
+                });
+                redrawChartBig1(new_chart_labels, new_chart_data);
             });
+    };
 
-            const ctx = document.getElementById(id);
-            const info = '';
-
-             if (ctx == 'poolhr_chart') {
-                 info = poolHashRate;
-             }
-        
-             else if (ctx == 'workers_chart') {
-                 info = connectedMiners;
-             }
-        
-             else if (ctx == 'globalhr_chart') {
-                 info = networkHashRate;
-             }
-        
-             else if (ctx == 'globaldiff_chart') {
-                 info = networkDifficulty;
-             }
-        
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-        
-                    datasets: [{
-                        label: '',
-                        data: [
-                            info
-                        ],
-                        backgroundColor: 'rgb(20,20,20, 0.2)',
-                        borderWidth: 0,
-                        fill: true
-                    }]
-                },
+    function loadPoolStatistics() {
+        return $.ajax(API + 'pools/' + current + '/performance')
+            .done(function (data) {
+                let new_chart_labels = [];
+                let new_chart_data = [];
+                $.each(data.stats, function (index, value) {
+                    new_chart_data.push(value.poolHashrate);
+                    new_chart_labels.push(value.created);
+                });
+                redrawChartBig1(new_chart_labels, new_chart_data);
             });
-        })
-     }
+    };
+
+    function redrawChartBig1(chart_labels, chart_data) {
+        var ctx = document.getElementById("poolhr_chart").getContext('2d');
+
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+    
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)');
+        var config = {
+          type: 'line',
+          data: {
+            labels: chart_labels,
+            datasets: [{
+              label: '',
+              fill: true,
+              backgroundColor: gradientStroke,
+              borderColor: '#d346b1',
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: '#d346b1',
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: '#d346b1',
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 0,
+              data: chart_data,
+            }]
+          }
+        };
+        new Chart(ctx, config);
+    }

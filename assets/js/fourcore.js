@@ -71,32 +71,42 @@ function loadStatistics() {
     function redrawChartBig1(chart_labels, chart_data) {
         var ctx = document.getElementById("poolhr_chart").getContext('2d');
 
-        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-    
-        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)');
         var config = {
           type: 'line',
+          options: {
+            scales: {
+                x: {
+                   display: false,
+                },
+                y: {
+                   display: false,
+                }
+             },
+             plugins: {   
+                legend: 
+                {
+                  display: false,
+                },
+             }
+          },
           data: {
             labels: chart_labels,
             datasets: [{
               label: '',
               fill: true,
-              backgroundColor: gradientStroke,
-              borderColor: '#d346b1',
-              borderWidth: 2,
+              backgroundColor: 'rgba(20,20,20, 0.8)',
+              borderColor: 'rgb(20,20,20)',
+              borderWidth: 4,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: '#d346b1',
               pointBorderColor: 'rgba(255,255,255,0)',
-              pointHoverBackgroundColor: '#d346b1',
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
               pointRadius: 0,
-              data: chart_data,
-            }]
+              // data: chart_data,
+              data: [1,2,3,4,5,6,5,4,3,2,3,4,5,4,3,4,5,6,7,7,7,8,8,8,8,8,8,8,8,8,8],
+            }],
           }
         };
         new Chart(ctx, config);

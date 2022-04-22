@@ -42,7 +42,8 @@ function loadStatistics() {
         });
     }
 
-    function loadPoolStatistics() {
+	// Function used to load the pool graph function
+    function loadPoolGraph() {
         return $.ajax(API + 'pools/' + current + '/performance')
             .done(function (data) {
                 let new_chart_labels = [];
@@ -51,29 +52,21 @@ function loadStatistics() {
                     new_chart_data.push(value.poolHashrate);
                     new_chart_labels.push(value.created);
                 });
-                redrawChartBig1(new_chart_labels, new_chart_data);
+                drawPoolGraph(new_chart_labels, new_chart_data);
             });
     };
 
-    function loadPoolStatistics() {
-        return $.ajax(API + 'pools/' + current + '/performance')
-            .done(function (data) {
-                let new_chart_labels = [];
-                let new_chart_data = [];
-                $.each(data.stats, function (index, value) {
-                    new_chart_data.push(value.poolHashrate);
-                    new_chart_labels.push(value.created);
-                });
-                redrawChartBig1(new_chart_labels, new_chart_data);
-            });
-    };
-
-    function redrawChartBig1(chart_labels, chart_data) {
+	// Private function used to draw the graph information in a line
+    function drawPoolGraph(chart_labels, chart_data) {
         var ctx = document.getElementById("poolhr_chart").getContext('2d');
-
         var config = {
           type: 'line',
-          options: {
+          options: {  
+            layout: {
+            	padding: 20,
+        	},
+			responsive: true,
+    		maintainAspectRatio: false,
             scales: {
                 x: {
                    display: false,
@@ -94,18 +87,11 @@ function loadStatistics() {
             datasets: [{
               label: '',
               fill: true,
-              backgroundColor: 'rgba(20,20,20, 0.8)',
+              backgroundColor: 'transparent',
               borderColor: 'rgb(20,20,20)',
-              borderWidth: 4,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBorderColor: 'rgba(255,255,255,0)',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
+              borderWidth: 2,
               pointRadius: 0,
-              // data: chart_data,
-              data: [1,2,3,4,5,6,5,4,3,2,3,4,5,4,3,4,5,6,7,7,7,8,8,8,8,8,8,8,8,8,8],
+              data: chart_data,
             }],
           }
         };

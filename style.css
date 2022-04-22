@@ -23,11 +23,29 @@
     z-index: 1;
 }
 
-.statcontainer div {
-    margin: 0 auto;
-    float: left;
-    width: 200px;
-    height: 80px;
+.holder {
+	margin-bottom: 3%;
+	margin-top: 3%;
+	border-color: rgb(20,20,20);
+	border-left: 2px solid;
+	padding-left: 10px;
+}
+
+.graphholder {
+	width: 70vw;
+	height: 128px;
+	margin-top: -4%;
+	margin-right: 10%;
+	border-color: rgb(20,20,20);
+	border-left: 2px solid;
+}
+
+.graphinfo {
+	margin-bottom: 3%;
+	margin-top: 3%;
+	border-color: rgb(20,20,20);
+	border-left: 2px solid;
+	padding-left: 10px;
 }
 
 .main {

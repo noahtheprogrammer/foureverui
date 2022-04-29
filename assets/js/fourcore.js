@@ -88,7 +88,7 @@ function loadStatistics() {
               label: '',
               fill: true,
               backgroundColor: 'transparent',
-              borderColor: 'rgb(20,20,20)',
+              borderColor: 'rgb(247,247,247)',
               borderWidth: 2,
               pointRadius: 0,
               data: chart_data,

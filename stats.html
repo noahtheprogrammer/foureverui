@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     </head>
 
     <body onload="loadStatistics(), loadPoolGraph()">
@@ -18,53 +19,70 @@
 		<!-- Sidebar div used for navigational purposes -->
         <div class="sidebar">
             <img src="assets/img/logo.png" class="logo"/>
-            <ul>
-                <li><a href="#"><img src="assets/img/dashboard_inactive.png" class="menuimg"/></a></li>
-                <li><a href="#"></a><img src="assets/img/stats_active.png" class="menuimg"/></li>
-                <li><a href="#"><img src="assets/img/workers_inactive.png" class="menuimg"/></a></li>
-                <li><a href="#"><img src="assets/img/help_inactive.png" class="menuimg"/></a></li>
-            </ul>
-        </div>
-
-		<!-- Main div used to hold information outside the sidebar and the footer -->
-        <div class="main">
-
-            <h2>Statistics</h2>
-
-			<!-- Container used to hold information and main graph --> 
-            <div>
-					<div class="mainholder">
-						<div class="hrholder">
-		                    <h3>Pool Hashrate</h3>
-		                    <h4 id="pool_hr">Not available</h4>
-		                </div>
-						<div class="graphholder">
-		                    <canvas id="poolhr_chart"></canvas>
-						</div>
-				</div>
-
-				<div class="holder">
-                    <h3>Active Workers</h3>
-                    <h4 id="workers">Not available</h4>
+            <div class="optioncontainer">
+                <div>
+                    <a href="dashboard.html">
+                        <img src="assets/img/home_inactive.png" class="menuimg"/>
+                        <h3>Home</h3>
+                    </a>
                 </div>
-
-                <div class="holder">
-                    <h3>Global Hashrate</h3>
-                    <h4 id="global_hr">Not available</h4>
+                <div>
+                    <img src="assets/img/stats_active.png" class="menuimg"/>
+                    <h3>Statistics</h3>
                 </div>
-                
-                <div class="holder">
-                    <h3>Global Difficulty</h3>
-                    <h4 id="global_diff">Not available</h4>
+                <div>
+                    <img src="assets/img/workers_inactive.png" class="menuimg"/>
+                    <h3>Workers</h3>
+                </div>
+                <div>
+                    <img src="assets/img/settings_inactive.png" class="menuimg"/>
+                    <h3>Settings</h3>
+                </div>
+                <div>
+                    <img src="assets/img/help_inactive.png" class="menuimg"/>
+                    <h3>Help</h3>
                 </div>
             </div>
         </div>
-                        
-        <!-- Footer for general information about creators and support -->
-        <footer>
-            <img src="assets/img/gh.png"/>
-            <img src="assets/img/twitter.png"/>
-            <img src="assets/img/ig.png"/>
-        </footer>
+
+		<!-- Container used to hold main information, title, and other such containers -->
+        <div>
+            <div class="titlecontainer">
+                <h2>Statistics</h2>
+                <p>Information regarding the pool and network can be found here on the graph and text below.</p>
+            </div>
+            <br>
+			<div class="graphcontainer">
+		        <canvas id="poolhr_chart"></canvas>
+			</div>
+            <br>
+            <div class="statscontainer">
+                <div class="datacontainer">
+                    <div>
+                        <h4 id="pool_hr">NA</h4>
+                        <h3>Pool Hashrate</h3>
+                    </div>
+                    <div>
+                        <h4 id="workers">NA</h4>
+                        <h3>Workers</h3>
+                    </div>
+                    <div>
+                        <h4 id="global_hr">NA</h4>
+                        <h3>Global Hashrate</h3>
+                    </div>
+                    <div>
+                        <h4 id="global_diff">NA</h4>
+                        <h3>Global Difficulty</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container that holds text to use extra whitespace -->
+            <div class="titlecontainer">
+                <h1>
+                    "Statistics are like a bikini. What they reveal is suggestive, but what they conceal is vital."
+                </h1>
+            </div>
+        </div>
     </body>
 </html>

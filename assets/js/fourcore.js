@@ -35,9 +35,9 @@ function loadStatistics() {
         .done(function (data) {
             $.each(data.pools, function (index, value) {
                 $('#workers').text(formatSymbol(value.poolStats.connectedMiners, 0, ''));
-                $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 3, 'H/s'));
-                $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 3, 'H/s'));
-                $('#global_diff').text(formatSymbol(value.networkStats.networkDifficulty, 3, ''));
+                $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 1, 'H/s'));
+                $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 1, 'H/s'));
+                $('#global_diff').text(formatSymbol(value.networkStats.networkDifficulty, 1, ''));
             });
         });
     }
@@ -63,7 +63,7 @@ function loadStatistics() {
           type: 'line',
           options: {  
             layout: {
-            	padding: 20,
+            	padding: 40,
         	},
 			responsive: true,
     		maintainAspectRatio: false,

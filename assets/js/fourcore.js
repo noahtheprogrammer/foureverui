@@ -54,11 +54,54 @@ function loadStatistics() {
                 });
                 drawPoolGraph(new_chart_labels, new_chart_data);
             });
-    };
+    }
+
+    // Function used to load all miner statistics and create graph
+    function loadMinerStatistics() {
+        let miner = $('#mineraddress').val();
+        $.ajax(API + 'pools/' + current + '/miners/' + miner)
+            .done(function (data) {
+                var workerHashRate = 0;
+                var workerSharesRate = 0;
+                var workerNames = [];
+                $.each(data.performance.workers, function (index, value) {
+                    if (value) {
+                        workerHashRate += value.hashrate;
+                        workerSharesRate += value.sharesPerSecond;
+                        workerNames.push(index);
+                    }
+                });
+
+                $('#workers_count').text(formalSymbol(workerNames.length, 0, ''));
+                $('#miner_hr').text(formalSymbol(workerHashRate, 2, 'H/s'));
+                $('#pending_bal').text(formalSymbol(data.pendingBalance, 3, ''));
+                $('#rewarded_bal').text(formalSymbol(data.totalPaid, 3, ''));
+                $('#lifetime_bal').text(formalSymbol(data.pendingBalance + data.totalPaid, 3, ''));
+
+                // This is used to retrieve the information for the line chart
+                let new_chart_labels = [];
+                let new_chart_data = [];
+                $.each(data.performanceSamples, function (index, sample) {
+                    if (sample) {
+                        let workerHashRateForChart = 0;
+                        let workerSharesRateForChart = 0;
+                        new_chart_labels.push(sample.created.replace(/:00:00/g, ""))
+                        $.each(sample.workers, function (index, worker) {
+                            if (worker) {
+                                workerHashRateForChart += worker.hashrate;
+                                workerSharesRateForChart += worker.sharesPerSecond;
+                            }
+                        });
+                        new_chart_data.push(workerHashRateForChart);
+                    }
+                });
+                drawPoolGraph(new_chart_labels, new_chart_data);
+            })
+    }
 
 	// Private function used to draw the graph information in a line
     function drawPoolGraph(chart_labels, chart_data) {
-        var ctx = document.getElementById("poolhr_chart").getContext('2d');
+        var ctx = document.getElementById("hr_chart").getContext('2d');
         var config = {
           type: 'line',
           options: {  

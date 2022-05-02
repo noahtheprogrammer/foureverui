@@ -72,7 +72,8 @@ function loadStatistics() {
                     }
                 });
 
-                $('#workers_count').text(formalSymbol(workerNames.length, 0, ''));
+                $('#worker_count').text(formalSymbol(workerNames.length, 0, ''));
+                $('#miner_shares').text(_formatter(data.pendingShares, 0, ''));
                 $('#miner_hr').text(formalSymbol(workerHashRate, 2, 'H/s'));
                 $('#pending_bal').text(formalSymbol(data.pendingBalance, 3, ''));
                 $('#rewarded_bal').text(formalSymbol(data.totalPaid, 3, ''));

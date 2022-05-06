@@ -56,6 +56,30 @@
     margin: auto;
 }
 
+input[type=text] {
+	width: 70%;
+	height: 24px;
+	background-color: transparent;
+	border: 0px;
+	font-family: 'Shippori Antique', sans-serif;
+    font-size: 12px;
+	color: rgb(125,125,125);
+	vertical-align: bottom;
+}
+
+input[type=text]:focus {
+	outline: none;
+}
+
+#minersearch {
+	background-color: transparent;
+	border: 0px;
+	padding-top: 10px;
+}
+
+#minersearch img {
+	vertical-align: top;
+}
 
 body {
     padding-left: 256px;

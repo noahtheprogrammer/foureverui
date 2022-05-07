@@ -58,26 +58,32 @@ function loadStatistics() {
 
     // Function used to load all miner statistics and create graph
     function loadMinerStatistics() {
-        let miner = $('#mineraddress').val();
-        $.ajax(API + 'pools/' + current + '/miners/' + miner)
+		let miner = $('#mineraddress').val();
+			$.ajax(API + 'pools/' + current + '/miners/' + miner)
             .done(function (data) {
                 var workerHashRate = 0;
                 var workerSharesRate = 0;
                 var workerNames = [];
-                $.each(data.performance.workers, function (index, value) {
-                    if (value) {
-                        workerHashRate += value.hashrate;
-                        workerSharesRate += value.sharesPerSecond;
-                        workerNames.push(index);
-                    }
-                });
+				try {
+					$.each(data.performance.workers, function (index, value) {
+	                if (value) {
+	                        workerHashRate += value.hashrate;
+	                        workerSharesRate += value.sharesPerSecond;
+	                        workerNames.push(index);
+	                    }
+	                });
+				}
 
-                $('#worker_count').text(formalSymbol(workerNames.length, 0, ''));
-                $('#miner_shares').text(_formatter(data.pendingShares, 0, ''));
-                $('#miner_hr').text(formalSymbol(workerHashRate, 2, 'H/s'));
-                $('#pending_bal').text(formalSymbol(data.pendingBalance, 3, ''));
-                $('#rewarded_bal').text(formalSymbol(data.totalPaid, 3, ''));
-                $('#lifetime_bal').text(formalSymbol(data.pendingBalance + data.totalPaid, 3, ''));
+			catch(err) {
+				window.alert("Oops, we can't seem to find any information about this miner. Are you sure you have submitted a share?");
+				}
+
+                $('#worker_count').text(formatSymbol(workerNames.length, 0, ''));
+                $('#miner_shares').text(formatSymbol(data.pendingShares, 0, ''));
+                $('#miner_hr').text(formatSymbol(workerHashRate, 2, 'H/s'));
+                $('#pending_bal').text(formatSymbol(data.pendingBalance, 3, ''));
+                $('#rewarded_bal').text(formatSymbol(data.totalPaid, 3, ''));
+                $('#lifetime_bal').text(formatSymbol(data.pendingBalance + data.totalPaid, 3, ''));
 
                 // This is used to retrieve the information for the line chart
                 let new_chart_labels = [];
@@ -98,7 +104,7 @@ function loadStatistics() {
                 });
                 drawPoolGraph(new_chart_labels, new_chart_data);
             })
-    }
+		}
 
 	// Private function used to draw the graph information in a line
     function drawPoolGraph(chart_labels, chart_data) {

@@ -2,6 +2,9 @@
     width: 24px;
     height: auto;
 	margin: 20px;
+	image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .sidebar {
@@ -19,6 +22,9 @@
 	width: 24px;
 	height: auto;
     margin: 0px 20px 0px 20px;
+	image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .statscontainer {
@@ -94,7 +100,7 @@ body {
 h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3vw;
-    letter-spacing: 2px;
+	font-weight: 400;
     margin: 40px;
     color: rgb(247,247,247);
 }
@@ -125,6 +131,28 @@ p {
 
 a {
     text-decoration: none;
+}
+
+#homebtn {
+	margin: auto;
+    font-family: 'Shippori Antique', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+    text-decoration: none;
+}
+
+
+#error404 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30vw;
+    letter-spacing: 2px;
+    color: rgb(247,247,247);
+}
+
+#errorbody {
+	text-align: center;
+	padding-left: 0;
 }
 
 @media (max-width: 600px) {

@@ -1,7 +1,7 @@
 .logo {
     width: 24px;
     height: auto;
-    margin: 20px;
+	margin: 20px;
 }
 
 .sidebar {
@@ -16,6 +16,8 @@
 
 .menuimg {
     float: left;
+	width: 24px;
+	height: auto;
     margin: 0px 20px 0px 20px;
 }
 
@@ -80,6 +82,8 @@ input[type=text]:focus {
 
 #minersearch img {
 	vertical-align: top;
+	width: 24px;
+	height: auto;
 }
 
 body {
@@ -89,9 +93,9 @@ body {
 
 h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 44px;
+    font-size: 3vw;
     letter-spacing: 2px;
-    margin: 50px;
+    margin: 40px;
     color: rgb(247,247,247);
 }
 
@@ -121,4 +125,53 @@ p {
 
 a {
     text-decoration: none;
+}
+
+@media (max-width: 600px) {
+	body {
+		padding-left: 64px;
+	}
+
+	h1 {
+		font-size: 8vw;
+		letter-spacing: 0.25vw;
+	}
+	
+	.graphcontainer {
+    background-color: rgb(22,22,22);
+    width: 76vw;
+    border-radius: 8px;
+    margin: auto;
+	}
+
+	.statscontainer {
+    background-color: rgb(22,22,22);
+    width: 76vw;
+    height: fit-content;
+    border-radius: 8px;
+    text-align: center;
+    margin: auto;
+	}
+
+	.sidebar {
+    width: 64px;
+	height: 100%;
+    background-color: rgb(16,16,16);
+	position: fixed;
+	}
+
+	.sidebar h3 {
+		display: none;
+	}
+
+	.menuimg {
+		display: inline-block;
+		float: none;
+	}
+
+	.titlecontainer {
+    text-align: center;
+    margin: 32px auto auto auto;
+    width: 76vw;
+	}
 }

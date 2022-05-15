@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     </head>
 
-    <body onload="loadStatistics(), loadPoolGraph()">
+    <body>
 
 		<!-- Sidebar div used for navigational purposes -->
         <div class="sidebar">
@@ -22,13 +22,13 @@
             <div class="optioncontainer">
                 <div>
                     <a href="dashboard.html">
-                        <img src="assets/img/home_inactive.png" class="menuimg"/>
+                        <img src="assets/img/home_active.png" class="menuimg"/>
                         <h3>Home</h3>
                     </a>
                 </div>
                 <div>
                     <a href="stats.html">
-                        <img src="assets/img/stats_active.png" class="menuimg"/>
+                        <img src="assets/img/stats_inactive.png" class="menuimg"/>
                         <h3>Statistics</h3>
                     </a>
                 </div>
@@ -50,10 +50,14 @@
 		<!-- Container used to hold main information, title, and other such containers -->
         <div>
             <div class="titlecontainer">
-                <h2>Statistics</h2>
-                <p>Information regarding the pool and network can be found here on the graph and text below.</p>
+                <h2>Home</h2>
+                <p>Information related to a specific mining address can be found by searching and using the figures below.</p>
             </div>
             <br>
+            <div class="statscontainer">
+                <input type="text" id="mineraddress" placeholder="Enter your mining address">
+                <button type="button" id="minersearch" onclick="loadMinerStatistics()"><img src="assets/img/search.png"></button>
+            </div>
 			<div class="graphcontainer">
 		        <canvas id="hr_chart"></canvas>
 			</div>
@@ -61,20 +65,24 @@
             <div class="statscontainer">
                 <div class="datacontainer">
                     <div>
-                        <h4 id="pool_hr">NA</h4>
-                        <h3>Pool Hashrate</h3>
+                        <h4 id="miner_hr">0 H/s</h4>
+                        <h3>Hashrate</h3>
                     </div>
                     <div>
-                        <h4 id="workers">NA</h4>
+                        <h4 id="miner_shares">0</h4>
+                        <h3>Shares</h3>
+                    </div>
+                    <div>
+                        <h4 id="pending_bal">0</h4>
+                        <h3>Pending</h3>
+                    </div>
+                    <div>
+                        <h4 id="rewarded_bal">0</h4>
+                        <h3>Rewarded</h3>
+                    </div>
+                    <div>
+                        <h4 id="worker_count">0</h4>
                         <h3>Workers</h3>
-                    </div>
-                    <div>
-                        <h4 id="global_hr">NA</h4>
-                        <h3>Global Hashrate</h3>
-                    </div>
-                    <div>
-                        <h4 id="global_diff">NA</h4>
-                        <h3>Global Difficulty</h3>
                     </div>
                 </div>
             </div>
@@ -82,7 +90,7 @@
             <!-- Container that holds text to use extra whitespace -->
             <div class="titlecontainer">
                 <h1>
-                    "Statistics are like a bikini. What they reveal is suggestive, but what they conceal is vital."
+                    "A girl called me once and said come over, nobody is home! I went there and she was right, nobody was home."
                 </h1>
             </div>
         </div>

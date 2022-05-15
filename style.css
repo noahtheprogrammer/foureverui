@@ -43,7 +43,7 @@
 }
 
 .optioncontainer div {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .optioncontainer h3 {
@@ -52,9 +52,9 @@
     color: rgb(247,247,247);
 }
 
-.datacontainer div {
-    display: inline-block;
-    margin: 20px;
+.datacontainer {
+	display: grid;
+	grid-template-columns: 50% 50%;
 }
 
 .graphcontainer {
@@ -138,7 +138,7 @@ a {
     font-family: 'Shippori Antique', sans-serif;
     font-weight: bold;
     font-size: 14px;
-    color: rgb(150, 150, 150);
+    color: rgb(125, 125, 125);
     text-decoration: none;
 }
 

@@ -17,7 +17,7 @@ Fourcore strives to follow these four principles, hence the four in our name:
 This website can be used on any server that supports HTML, CSS, and Javascript such as standard Apache and Nginx web servers.
 
 <h3>Configurations</h3>
-In order to properly configure the pool, enter `assets/js/fourcore.js` and look to lines 1-5.
+In order to properly configure the pool, enter assets/js/fourcore.js and look to lines 1-5.
 First, change the API variable to point towards the pool (example.com/api/).
 Then, change the current variable to its proper value.
 This  is used to locate the proper statistics for the proper coin if the pool is used for multiple coins.

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Fourcore</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/jquery.js" type="text/javascript"></script>
+        <script src="assets/js/fourcore.js" type="text/javascript"></script>
+        <script src="assets/js/node_modules/chart.js/dist/chart.js" type="text/javascript"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+		<!-- Sidebar div used for navigational purposes -->
+        <header>
+            <ul>
+                <li><a href="index.html"><img src="assets/img/logo.png"></a></li>
+                <li><a href="statistics.html">Statistics</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </header>
+
+		<!-- Container used to hold main information, title, and other such containers -->
+        <div class="bodycontainer">
+            <div class="inputcontainer">
+                <input type="text" id="mineraddress" placeholder="Enter your mining address">
+                <button type="button" id="minersearch" onclick="loadMinerStatistics()"><img src="assets/img/search.png"></button>
+            </div>
+            <div class="duocontainer">
+                <div class="subcontainer">
+                    <p>Hashrate Chart</p>
+                    <div class="graphcontainer">
+                        <canvas id="hr_chart"></canvas>
+                    </div>
+                </div>
+                <div class="subcontainer">
+                </div>
+            </div>
+            <br>
+            <div class="maincontainer">
+                <div class="datacontainer">
+                    <div>
+                        <p>Hashrate</p>
+                        <h2 id="minerhashrate">0&nbsp;H</h2>
+                    </div>
+                    <div>
+                        <p>Shares</p>
+                        <h2 id="minershares">0</h2>
+                    </div>
+                    <div>
+                        <p>Workers</p>
+                        <h2 id="minerworkers">0</h2>
+                    </div>
+                    <div>
+                        <p>Pending</p>
+                        <h2 id="minerpending">0</h2>
+                    </div>
+                    <div>
+                        <p>Rewarded</p>
+                        <h2 id="minerrewarded">0</h2>
+                    </div>
+                    <div>
+                        <p>Lifetime</p>
+                        <h2 id="minerlifetime">0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

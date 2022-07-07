@@ -78,12 +78,12 @@ function loadStatistics() {
 				window.alert("Oops, we can't seem to find any information about this miner. Are you sure you have submitted a share?");
 				}
 
-                $('#worker_count').text(formatSymbol(workerNames.length, 0, ''));
+                $('#minerworkers').text(formatSymbol(workerNames.length, 0, ''));
                 $('#miner_shares').text(formatSymbol(data.pendingShares, 0, ''));
-                $('#miner_hr').text(formatSymbol(workerHashRate, 2, 'H/s'));
-                $('#pending_bal').text(formatSymbol(data.pendingBalance, 3, ''));
-                $('#rewarded_bal').text(formatSymbol(data.totalPaid, 3, ''));
-                $('#lifetime_bal').text(formatSymbol(data.pendingBalance + data.totalPaid, 3, ''));
+                $('#minerhashrate').text(formatSymbol(workerHashRate, 2, 'H'));
+                $('#minerpending').text(formatSymbol(data.pendingBalance, 2, ''));
+                $('#minerrewarded').text(formatSymbol(data.totalPaid, 2, ''));
+                $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 3, ''));
 
                 // This is used to retrieve the information for the line chart
                 let new_chart_labels = [];
@@ -113,16 +113,16 @@ function loadStatistics() {
           type: 'line',
           options: {  
             layout: {
-            	padding: 40,
+            	padding: 16,
         	},
 			responsive: true,
     		maintainAspectRatio: false,
             scales: {
                 x: {
-                   display: false,
+                   display: true,
                 },
                 y: {
-                   display: false,
+                   display: true,
                 }
              },
              plugins: {   
@@ -138,7 +138,7 @@ function loadStatistics() {
               label: '',
               fill: true,
               backgroundColor: 'transparent',
-              borderColor: 'rgb(247,247,247)',
+              borderColor: '#6667AB',
               borderWidth: 2,
               pointRadius: 0,
               data: chart_data,

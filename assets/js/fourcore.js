@@ -64,12 +64,16 @@ function loadStatistics() {
                 var workerHashRate = 0;
                 var workerSharesRate = 0;
                 var workerNames = [];
+                var hashrateList = [];
 				try {
 					$.each(data.performance.workers, function (index, value) {
 	                if (value) {
 	                        workerHashRate += value.hashrate;
 	                        workerSharesRate += value.sharesPerSecond;
 	                        workerNames.push(index);
+                            for (var i=0; i < workerNames.length; i++) {
+                                hashrateList[i] = value.hashrate;
+                            }
 	                    }
 	                });
 				}
@@ -78,12 +82,15 @@ function loadStatistics() {
 				window.alert("Oops, we can't seem to find any information about this miner. Are you sure you have submitted a share?");
 				}
 
-                $('#minerworkers').text(formatSymbol(workerNames.length, 0, ''));
-                $('#miner_shares').text(formatSymbol(data.pendingShares, 0, ''));
+                $('#minershares').text(formatSymbol(data.pendingShares, 0, ''));
                 $('#minerhashrate').text(formatSymbol(workerHashRate, 2, 'H'));
                 $('#minerpending').text(formatSymbol(data.pendingBalance, 2, ''));
                 $('#minerrewarded').text(formatSymbol(data.totalPaid, 2, ''));
-                $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 3, ''));
+                $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 2, ''));
+                $('#minerworkers').text(formatSymbol(workerNames.length, 0, ''));
+                for (var i=0; i < workerNames.length; i++) {
+                    $('#workerlist').append('<p>' + workerNames[i] + ' is currently contributing ' +formatSymbol(hashrateList[i], 2, 'H/s') + '</p>');
+                }
 
                 // This is used to retrieve the information for the line chart
                 let new_chart_labels = [];
@@ -119,7 +126,7 @@ function loadStatistics() {
     		maintainAspectRatio: false,
             scales: {
                 x: {
-                   display: true,
+                   display: false,
                 },
                 y: {
                    display: true,

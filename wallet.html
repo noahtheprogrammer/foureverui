@@ -17,8 +17,8 @@
 
 		<!-- Sidebar div used for navigational purposes -->
         <header>
+            <a href="index.html"><img src="assets/img/logo.png"></a>
             <ul>
-                <li><a href="index.html"><img src="assets/img/logo.png"></a></li>
                 <li><a href="statistics.html">Statistics</a></li>
                 <li><a href="wallet.html">Wallet</a></li>
                 <li><a href="settings.html">Settings</a></li>
@@ -34,39 +34,42 @@
             </div>
             <div class="duocontainer">
                 <div class="subcontainer">
-                    <p>Hashrate Chart</p>
+                    <h3>Statistics</h3>
                     <div class="graphcontainer">
                         <canvas id="hr_chart"></canvas>
                     </div>
                 </div>
                 <div class="subcontainer">
+                    <h3>Worker List</h3>
+                    <p>Individual worker statistics will be displayed below.</p>
+                    <div id="workerlist"></div>
                 </div>
             </div>
             <br>
             <div class="maincontainer">
                 <div class="datacontainer">
                     <div>
-                        <p>Hashrate</p>
+                        <h3>Hashrate</h3>
                         <h2 id="minerhashrate">0&nbsp;H</h2>
                     </div>
                     <div>
-                        <p>Shares</p>
+                        <h3>Shares</h3>
                         <h2 id="minershares">0</h2>
                     </div>
                     <div>
-                        <p>Workers</p>
+                        <h3>Workers</h3>
                         <h2 id="minerworkers">0</h2>
                     </div>
                     <div>
-                        <p>Pending</p>
+                        <h3>Pending</h3>
                         <h2 id="minerpending">0</h2>
                     </div>
                     <div>
-                        <p>Rewarded</p>
+                        <h3>Rewarded</h3>
                         <h2 id="minerrewarded">0</h2>
                     </div>
                     <div>
-                        <p>Lifetime</p>
+                        <h3>Lifetime</h3>
                         <h2 id="minerlifetime">0</h2>
                     </div>
                 </div>

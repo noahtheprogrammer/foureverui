@@ -209,12 +209,17 @@ a {
     src: url('assets/fonts/directorsgothic.woff') format('woff');
   }
 
+html, body {
+    margin: 0;
+}
+
 header {
     left: 0;
     top: 0;
     width: 100%;
     height: 64px;
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(5px);
     z-index: 1000;
 }
 
@@ -230,10 +235,13 @@ header img {
     margin: 8px 0px 0px 32px;
 }
 
-header ul {
+ul {
     list-style-type: none;
-    margin-top: -12px;
+}
+
+header ul {
     float: right;
+    margin-top: -12px;
 }
 
 header ul li {
@@ -245,16 +253,22 @@ header ul li {
     text-decoration: none;
 }
 
+h3 {
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    font-weight: normal;
+    color: #4e4e4e;
+}
+
 p {
     font-family: "Source Sans Pro";
     font-size: 14px;
-    margin: 24px;
 }
 
 .maincontainer {
     width: 74vw;
     height: fit-content;
-    margin: auto;
+    margin: -16px auto 32px auto;
     padding-top: 3vw;
     background-color: rgba(244, 244, 244, .5);  
     backdrop-filter: blur(5px);
@@ -262,16 +276,13 @@ p {
     border-radius: 8px;
 }
 
-.datacontainer {
+.maincontainer .datacontainer {
     display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 }
 
-.datacontainer h3, .subcontainer h3 {
-    font-family: "Source Sans Pro";
-    font-size: 16px;
-    font-weight: normal;
-    color: #4e4e4e;
+.maincontainer .datacontainer div {
+    margin-left: 5vw;
 }
 
 .datacontainer h2 {
@@ -280,10 +291,6 @@ p {
     font-weight: normal;
     color: #1f1f1f;
     margin-top: -16px;
-}
-
-.datacontainer div {
-    margin-left: 5vw;
 }
 
 .bodycontainer {
@@ -383,4 +390,47 @@ input[type=text]:focus {
     box-shadow: 0 0 10px #eaeaea;
     border-radius: 8px;
     margin: 3vw;
+}
+
+.unknown {
+    display: block;
+    margin: 24px auto;
+    width: 64%;
+    height: auto;
+}
+
+footer {
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 128px;
+    padding-top: 12px;
+}
+
+footer h3 {
+    margin-left: 10vw;
+}
+
+footer .datacontainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+footer ul {
+    padding-left: 0;
+    margin-left: 10vw;
+}
+
+footer li {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #909090;
+    text-decoration: none;
+}
+
+footer {
+    font-family: "Source Sans Pro";
+    font-size: 14px;
 }

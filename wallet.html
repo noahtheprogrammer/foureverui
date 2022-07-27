@@ -16,7 +16,7 @@
     <body>
 
 		<!-- Header used for navigational purposes -->
-        <header>
+        <!-- <header>
             <a href="index.html"><img src="assets/img/logo.png"></a>
             <ul>
                 <li><a href="statistics.html">Statistics</a></li>
@@ -24,6 +24,17 @@
                 <li><a href="settings.html">Settings</a></li>
                 <li><a href="help.html">Help</a></li>
             </ul>
+        </header> -->
+        <header>
+            <div class="navigation">
+                <a href="index.html"><img src="assets/img/logo.png"></a>
+                <ul>
+                    <li><a href="statistics.html">Statistics</a></li>
+                    <li><a href="wallet.html">Wallet</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </div>
         </header>
 
 		<!-- Container used to hold main information, title, and other such containers -->
@@ -35,14 +46,14 @@
             <div class="duocontainer">
                 <div class="subcontainer">
                     <h3>Statistics</h3>
-                    <img src="assets/img/unknown.png" class="unknown">
+                    <img src="assets/img/unknown.png" class="unknown" id="graphplaceholder">
                     <div class="graphcontainer">
                         <canvas id="hr_chart"></canvas>
                     </div>
                 </div>
                 <div class="subcontainer">
                     <h3>Worker List</h3>
-                    <img src="assets/img/unknown.png" class="unknown">
+                    <img src="assets/img/unknown.png" class="unknown" id="workerplaceholder">
                     <div id="workerlist"></div>
                 </div>
             </div>
@@ -95,6 +106,7 @@
                         <li><a href="https://github.com/noahtheprogrammer/foureverui/issues/new">Report an issue</a></li>
                     </ul>
                 </div>
+                <p>Made with ❤️ by OKprogrammer</p>
             </div>
         </footer>
     </body>

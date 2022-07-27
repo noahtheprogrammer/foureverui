@@ -88,9 +88,14 @@ function loadStatistics() {
                 $('#minerrewarded').text(formatSymbol(data.totalPaid, 2, ''));
                 $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 2, ''));
                 $('#minerworkers').text(formatSymbol(workerNames.length, 0, ''));
-                for (var i=0; i < workerNames.length; i++) {
-                    $('#workerlist').append('<p>' + workerNames[i] + ' is currently contributing ' +formatSymbol(hashrateList[i], 2, 'H/s') + '</p>');
+                if (workerNames.length != 0) {
+                    document.getElementById("workerplaceholder").style.display = "none";
+                    for (var i=0; i < workerNames.length; i++) {
+                        $('#workerlist').append('<p>' + workerNames[i] + ' is currently contributing ' +formatSymbol(hashrateList[i], 2, 'H/s') + '</p>');
+                    }
                 }
+                
+                document.getElementById("graphplaceholder").style.display = "none";
 
                 // This is used to retrieve the information for the line chart
                 let new_chart_labels = [];

@@ -35,29 +35,15 @@
                     <li><a href="help.html">Help</a></li>
                 </ul>
             </div>
+            <h1>SEARCH YOUR ADDRESS</h1>
         </header>
 
 		<!-- Container used to hold main information, title, and other such containers -->
-        <div class="bodycontainer">
+        <div>
             <div class="inputcontainer">
                 <input type="text" id="mineraddress" placeholder="Enter your mining address">
                 <button type="button" id="minersearch" onclick="loadMinerStatistics()"><img src="assets/img/search.png"></button>
             </div>
-            <div class="duocontainer">
-                <div class="subcontainer">
-                    <h3>Statistics</h3>
-                    <img src="assets/img/unknown.png" class="unknown" id="graphplaceholder">
-                    <div class="graphcontainer">
-                        <canvas id="hr_chart"></canvas>
-                    </div>
-                </div>
-                <div class="subcontainer">
-                    <h3>Worker List</h3>
-                    <img src="assets/img/unknown.png" class="unknown" id="workerplaceholder">
-                    <div id="workerlist"></div>
-                </div>
-            </div>
-            <br>
             <div class="maincontainer">
                 <div class="datacontainer">
                     <div>
@@ -86,6 +72,21 @@
                     </div>
                 </div>
             </div>
+            <div class="duocontainer">
+                <div class="subcontainer">
+                    <h3>Statistics</h3>
+                    <img src="assets/img/unknown.png" class="unknown" id="graphplaceholder">
+                    <div class="graphcontainer">
+                        <canvas id="hr_chart"></canvas>
+                    </div>
+                </div>
+                <div class="subcontainer">
+                    <h3>Worker List</h3>
+                    <img src="assets/img/unknown.png" class="unknown" id="workerplaceholder">
+                    <div id="workerlist"></div>
+                </div>
+            </div>
+            <br>
         </div>
 
         <!-- Footer containing miscellaneous information and website navigation-->

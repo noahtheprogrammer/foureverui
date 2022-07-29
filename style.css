@@ -265,7 +265,15 @@ a {
 }
 
 a:hover {
-    filter: brightness(70%);
+    filter: brightness(50%);
+}
+
+h1 {
+    font-family: "Directors Gothic";
+    color: white;
+    font-size: 10vw;
+    text-align: center;
+    text-shadow: 5px 5px 12px rgba(200, 200, 200, .8);
 }
 
 h3 {
@@ -281,10 +289,10 @@ p {
 }
 
 .maincontainer {
-    width: 74vw;
+    width: 68vw;
     height: fit-content;
-    margin: -16px auto 32px auto;
-    padding-top: 3vw;
+    margin: 12px auto;
+    padding: 3vw;
     background-color: rgba(244, 244, 244, .6);  
     backdrop-filter: blur(5px);
     box-shadow: 0 0 10px rgba(200, 200, 200, .7);
@@ -306,10 +314,6 @@ p {
     font-weight: normal;
     color: #1f1f1f;
     margin-top: -16px;
-}
-
-.bodycontainer {
-    margin-top: 128px;
 }
 
 #workerlist {
@@ -343,7 +347,7 @@ p {
     border-radius: 8px;
     width: fit-content;
     padding: 20px;
-    margin: auto;
+    margin: calc(12px + 4vw) auto;
 }
 
 input[type=text] {
@@ -397,7 +401,7 @@ input[type=text]:focus {
 .duocontainer {
     display: grid;
     grid-template-columns: 50% 50%;
-    margin: auto;
+    margin: 12px auto;
     width: 80vw;
     padding: 20px;
 }

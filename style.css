@@ -1,4 +1,4 @@
-.logo {
+/* .logo {
     width: 24px;
     height: auto;
 	margin: 20px;
@@ -202,4 +202,268 @@ a {
     margin: 32px auto auto auto;
     width: 76vw;
 	}
+} */
+
+@font-face {
+    font-family: "Directors Gothic";
+    src: url('assets/fonts/directorsgothic.woff') format('woff');
+  }
+
+html, body {
+    margin: 0;
+}
+
+body {
+    background-image: url('assets/img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navigation {
+    width: fit-content;
+    height: 48px;
+    z-index: 1000;
+    background-color: white;  
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(200, 200, 200, .7);;
+    border-radius: 48px;
+    margin: 12px auto;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #4e4e4e;
+}
+
+.navigation img {
+    width: 48px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 6px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header ul {
+    float: right;
+    margin-top: -18px;
+}
+
+header ul li {
+    display: inline-block;
+    float: none;
+    margin: 32px 32px 0px 0px;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    text-decoration: none;
+}
+
+a {
+    transition: 0.2s;
+}
+
+a:hover {
+    filter: brightness(50%);
+}
+
+h1 {
+    font-family: "Directors Gothic";
+    color: white;
+    font-size: 10vw;
+    text-align: center;
+    text-shadow: 5px 5px 12px rgba(200, 200, 200, .8);
+}
+
+h3 {
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    font-weight: normal;
+    color: #4e4e4e;
+}
+
+p {
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+}
+
+.maincontainer {
+    width: 68vw;
+    height: fit-content;
+    margin: 12px auto;
+    padding: 3vw;
+    background-color: rgba(244, 244, 244, .6);  
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(200, 200, 200, .7);
+    border-radius: 8px;
+}
+
+.maincontainer .datacontainer {
+    display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+.maincontainer .datacontainer div {
+    margin-left: 5vw;
+}
+
+.datacontainer h2 {
+    font-family: "Directors Gothic";
+    font-size: 48px;
+    font-weight: normal;
+    color: #1f1f1f;
+    margin-top: -16px;
+}
+
+#workerlist {
+    padding: 0 12px;
+}
+
+#minerhashrate::after {
+    content: "/s";
+    font-size: 28px;
+}
+
+#minerworkers::after {
+    content: " ACTIVE";
+    font-size: 28px;
+}
+
+#minerpending::after, #minerrewarded::after, #minerlifetime::after {
+    content: " RTM";
+    font-size: 28px;
+}
+
+#minershares::after {
+    content: " SENT";
+    font-size: 28px;
+}
+
+.inputcontainer {
+    background-color: rgba(244, 244, 244, .6);  
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(200, 200, 200, .7);
+    border-radius: 8px;
+    width: fit-content;
+    padding: 20px;
+    margin: calc(12px + 4vw) auto;
+}
+
+input[type=text] {
+	width: 40vw;
+	height: 38px;
+	background-color: transparent;
+	border: 0px;
+	border-radius: 8px;
+	font-family: "Source Sans Pro";
+    font-size: 14px;
+	color: rgb(125,125,125);
+	vertical-align: bottom;
+    float: left;
+}
+
+input[type=text]:focus {
+	outline: none;
+}
+
+#workerlist li {
+    font-family: system-ui;
+}
+
+#minersearch {
+	background-color: transparent;
+	border: 0px;
+    transition: 0.1s;
+}
+
+#minersearch:hover {
+    filter: brightness(94%);
+}
+
+#minersearch:active {
+    filter: brightness(78%);
+}
+
+#minersearch img {
+	width: 38px;
+	height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #a1a1a1;
+}
+
+.graphcontainer {
+    margin: -16px auto;
+    width: 90%;
+    height: 80%;
+}
+
+.duocontainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 12px auto;
+    width: 80vw;
+    padding: 20px;
+}
+
+.duocontainer h3 {
+    margin: 24px;
+}
+
+.duocontainer .subcontainer {
+    width: 34vw;
+    height: 34vw;
+    background-color: rgba(244, 244, 244, .6);  
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(200, 200, 200, .7);
+    border-radius: 8px;
+    margin: 3vw;
+}
+
+.unknown {
+    display: block;
+    margin: 24px auto;
+    width: 64%;
+    height: auto;
+}
+
+footer {
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    padding: 16px 0;
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+    margin-top: 24px;
+}
+
+footer h3 {
+    margin-left: 10vw;
+}
+
+footer .datacontainer {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    margin: 34px auto;
+}
+
+footer ul {
+    padding-left: 0;
+    margin-top: -10px;
+    margin-left: 10vw;
+}
+
+footer li {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #909090;
+    text-decoration: none;
+}
+
+footer p {
+    margin-left: 10vw;
+    font-size: 12px;
+    color: #c6c6c6;
 }

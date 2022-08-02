@@ -4,43 +4,43 @@ var API = 'https://4rtm.com/api/';
 // This value can be entered as null whenever the API points to the proper JSON by default
 var current = 'Raptoreum-TESTNET';
 
-// Function used to format statistics depending on size of variable
-function formatSymbol(value, decimal, unit) {
-    if (value === 0) {
-        return '0 ' + unit;
-    } else {
-        var si = [
-            { value: 1, symbol: "" },
-            { value: 1e3, symbol: "k" },
-            { value: 1e6, symbol: "M" },
-            { value: 1e9, symbol: "G" },
-            { value: 1e12, symbol: "T" },
-            { value: 1e15, symbol: "P" },
-            { value: 1e18, symbol: "E" },
-            { value: 1e21, symbol: "Z" },
-            { value: 1e24, symbol: "Y" },
-        ];
-        for (var i = si.length - 1; i > 0; i--) {
-            if (value >= si[i].value) {
-                break;
+    // Function used to format statistics depending on size of variable
+    function formatSymbol(value, decimal, unit) {
+        if (value === 0) {
+            return '0 ' + unit;
+        } else {
+            var si = [
+                { value: 1, symbol: "" },
+                { value: 1e3, symbol: "k" },
+                { value: 1e6, symbol: "M" },
+                { value: 1e9, symbol: "G" },
+                { value: 1e12, symbol: "T" },
+                { value: 1e15, symbol: "P" },
+                { value: 1e18, symbol: "E" },
+                { value: 1e21, symbol: "Z" },
+                { value: 1e24, symbol: "Y" },
+            ];
+            for (var i = si.length - 1; i > 0; i--) {
+                if (value >= si[i].value) {
+                    break;
+                }
             }
+            return (value / si[i].value).toFixed(decimal).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + ' ' + si[i].symbol + unit;
         }
-        return (value / si[i].value).toFixed(decimal).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + ' ' + si[i].symbol + unit;
     }
-}
 
-// Function used to load general statistics
-function loadStatistics() {
-    return $.ajax(API + 'pools')
-        .done(function (data) {
-            $.each(data.pools, function (index, value) {
-                $('#workers').text(formatSymbol(value.poolStats.connectedMiners, 0, ''));
-                $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 1, 'H/s'));
-                $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 1, 'H/s'));
-                $('#global_diff').text(formatSymbol(value.networkStats.networkDifficulty, 1, ''));
+    // Function used to load general statistics
+    function loadStatistics() {
+        return $.ajax(API + 'pools')
+            .done(function (data) {
+                $.each(data.pools, function (index, value) {
+                    $('#workers').text(formatSymbol(value.poolStats.connectedMiners, 0, ''));
+                    $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 1, 'H/s'));
+                    $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 1, 'H/s'));
+                    $('#global_diff').text(formatSymbol(value.networkStats.networkDifficulty, 1, ''));
+                });
             });
-        });
-    }
+        }
 
 	// Function used to load the pool graph function
     function loadPoolGraph() {
@@ -64,12 +64,16 @@ function loadStatistics() {
                 var workerHashRate = 0;
                 var workerSharesRate = 0;
                 var workerNames = [];
+                var hashrateList = [];
 				try {
 					$.each(data.performance.workers, function (index, value) {
 	                if (value) {
 	                        workerHashRate += value.hashrate;
 	                        workerSharesRate += value.sharesPerSecond;
 	                        workerNames.push(index);
+                            for (var i=0; i < workerNames.length; i++) {
+                                hashrateList[i] = value.hashrate;
+                            }
 	                    }
 	                });
 				}
@@ -78,12 +82,20 @@ function loadStatistics() {
 				window.alert("Oops, we can't seem to find any information about this miner. Are you sure you have submitted a share?");
 				}
 
-                $('#worker_count').text(formatSymbol(workerNames.length, 0, ''));
-                $('#miner_shares').text(formatSymbol(data.pendingShares, 0, ''));
-                $('#miner_hr').text(formatSymbol(workerHashRate, 2, 'H/s'));
-                $('#pending_bal').text(formatSymbol(data.pendingBalance, 3, ''));
-                $('#rewarded_bal').text(formatSymbol(data.totalPaid, 3, ''));
-                $('#lifetime_bal').text(formatSymbol(data.pendingBalance + data.totalPaid, 3, ''));
+                $('#minershares').text(formatSymbol(data.pendingShares, 0, ''));
+                $('#minerhashrate').text(formatSymbol(workerHashRate, 2, 'H'));
+                $('#minerpending').text(formatSymbol(data.pendingBalance, 2, ''));
+                $('#minerrewarded').text(formatSymbol(data.totalPaid, 2, ''));
+                $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 2, ''));
+                $('#minerworkers').text(formatSymbol(workerNames.length, 0, ''));
+                if (workerNames.length != 0) {
+                    document.getElementById("workerplaceholder").style.display = "none";
+                    for (var i=0; i < workerNames.length; i++) {
+                        $('#workerlist').append('<p>' + workerNames[i] + ' is currently contributing ' +formatSymbol(hashrateList[i], 2, 'H/s') + '</p>');
+                    }
+                }
+                
+                document.getElementById("graphplaceholder").style.display = "none";
 
                 // This is used to retrieve the information for the line chart
                 let new_chart_labels = [];
@@ -113,7 +125,7 @@ function loadStatistics() {
           type: 'line',
           options: {  
             layout: {
-            	padding: 40,
+            	padding: 16,
         	},
 			responsive: true,
     		maintainAspectRatio: false,
@@ -122,7 +134,7 @@ function loadStatistics() {
                    display: false,
                 },
                 y: {
-                   display: false,
+                   display: true,
                 }
              },
              plugins: {   
@@ -138,7 +150,7 @@ function loadStatistics() {
               label: '',
               fill: true,
               backgroundColor: 'transparent',
-              borderColor: 'rgb(247,247,247)',
+              borderColor: '#6667AB',
               borderWidth: 2,
               pointRadius: 0,
               data: chart_data,

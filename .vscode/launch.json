@@ -7,8 +7,8 @@
         {
             "type": "pwa-msedge",
             "request": "launch",
-            "name": "Open wallet.html",
-            "file": "/Users/noahweaver/Documents/GitHub/fourcore/wallet.html"
+            "name": "Open statistics.html",
+            "file": "/Users/noahweaver/Documents/GitHub/fourcore/statistics.html"
         }
     ]
 }

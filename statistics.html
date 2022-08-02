@@ -28,10 +28,10 @@
         </header>
 
         <div>
-            <form class="inputcontainer" onsubmit="loadMinerPage()">
+            <div class="inputcontainer">
                 <input type="text" id="mineraddress" placeholder="Enter your mining address">
                 <button type="submit" id="minersearch"><img src="assets/img/search.png"></button>
-            </form>
+            </div>
             <div class="maincontainer">
                 <div class="datacontainer">
                     <div>
@@ -63,11 +63,9 @@
         </div>
     </body>
     <script>
-        $(document).ready(function () {
-            $('#minersearch').click(function (){
-                let wallet = $('#mineraddress').val();
-                window.location.href = '/wallet/' + miner;
-            })
+        $('#minersearch').click(function (){
+            let address = $('#mineraddress').val();
+            window.location.href = '/wallet/' + address;
         });
     </script>
 </html>

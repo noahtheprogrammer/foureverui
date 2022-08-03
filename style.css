@@ -392,6 +392,11 @@ input[type=text]:focus {
     box-shadow: 0 0 10px #a1a1a1;
 }
 
+#addresslabel {
+    font-size: 4vw;
+    margin: -8vw 0 8vw 0;
+}
+
 .graphcontainer {
     margin: -16px auto;
     width: 90%;

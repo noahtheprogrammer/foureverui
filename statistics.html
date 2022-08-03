@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     </head>
 
-    <body onload="loadStatistics(), loadPoolGraph()">
+    <body>
         <header>
             <div class="navigation">
                 <a href="index.html"><img src="assets/img/logo.png"></a>
@@ -63,9 +63,15 @@
         </div>
     </body>
     <script>
-        $('#minersearch').click(function (){
-            let address = $('#mineraddress').val();
-            window.location.href = '/wallet/' + address;
+
+        $(document).ready (function() {
+                $('#minersearch').click(function (){
+                let address = $('#mineraddress').val();
+                window.location.href = '/wallet.html?address=' + address;
+            });
+
+            loadStatistics();
+            loadPoolGraph();
         });
     </script>
 </html>

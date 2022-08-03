@@ -24,7 +24,8 @@
                     <li><a href="help.html">Help</a></li>
                 </ul>
             </div>
-            <h1 id="addresslabel">ADDRESS</h1>
+            <h1>CURRENTLY VIEWING</h1>
+            <h1 id="addresslabel">NULL</h1>
         </header>
 
 		<!-- Container used to hold main information, title, and other such containers -->
@@ -100,11 +101,10 @@
         $(document).ready (function() {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            var miner = urlParams.get('miner');
+            var address = urlParams.get('address');
 
-            if (miner == null){
-                miner = (window.location.pathname).replace(/\/miner\//g, "");
-            }
+            loadMinerStatistics(address);
+            $('#addresslabel').text(address);
         });
     </script>
 </html>

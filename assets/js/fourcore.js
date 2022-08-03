@@ -56,9 +56,50 @@ var current = 'Raptoreum-TESTNET';
             });
     }
 
+	// Private function used to draw the graph information in a line
+    function drawPoolGraph(chart_labels, chart_data) {
+        var ctx = document.getElementById("hr_chart").getContext('2d');
+        var config = {
+          type: 'line',
+          options: {  
+            layout: {
+            	padding: 16,
+        	},
+			responsive: true,
+    		maintainAspectRatio: false,
+            scales: {
+                x: {
+                   display: false,
+                },
+                y: {
+                   display: true,
+                }
+             },
+             plugins: {   
+                legend: 
+                {
+                  display: false,
+                },
+             }
+          },
+          data: {
+            labels: chart_labels,
+            datasets: [{
+              label: '',
+              fill: true,
+              backgroundColor: 'transparent',
+              borderColor: '#6667AB',
+              borderWidth: 2,
+              pointRadius: 0,
+              data: chart_data,
+            }],
+          }
+        };
+        new Chart(ctx, config);
+    }
+
     // Function used to load all miner statistics and create graph
-    function loadMinerStatistics() {
-		let miner = $('#mineraddress').val();
+    function loadMinerStatistics(miner) {
 			$.ajax(API + 'pools/' + current + '/miners/' + miner)
             .done(function (data) {
                 var workerHashRate = 0;
@@ -117,45 +158,3 @@ var current = 'Raptoreum-TESTNET';
                 drawPoolGraph(new_chart_labels, new_chart_data);
             })
 		}
-
-	// Private function used to draw the graph information in a line
-    function drawPoolGraph(chart_labels, chart_data) {
-        var ctx = document.getElementById("hr_chart").getContext('2d');
-        var config = {
-          type: 'line',
-          options: {  
-            layout: {
-            	padding: 16,
-        	},
-			responsive: true,
-    		maintainAspectRatio: false,
-            scales: {
-                x: {
-                   display: false,
-                },
-                y: {
-                   display: true,
-                }
-             },
-             plugins: {   
-                legend: 
-                {
-                  display: false,
-                },
-             }
-          },
-          data: {
-            labels: chart_labels,
-            datasets: [{
-              label: '',
-              fill: true,
-              backgroundColor: 'transparent',
-              borderColor: '#6667AB',
-              borderWidth: 2,
-              pointRadius: 0,
-              data: chart_data,
-            }],
-          }
-        };
-        new Chart(ctx, config);
-    }

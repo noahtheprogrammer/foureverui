@@ -1,2 +1,5 @@
 language = "html"
 run = "npx static-here"
+
+[nix]
+channel = "stable-22_05"

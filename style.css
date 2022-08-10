@@ -403,6 +403,16 @@ input[type=text]:focus {
     height: 80%;
 }
 
+.largegraphcontainer {
+	margin: 22px auto;
+	width: 90%;
+	height: 30vw;
+}
+
+.largegraphcontainer h3 {
+	margin-left: 24px;
+}
+
 .duocontainer {
     display: grid;
     grid-template-columns: 50% 50%;

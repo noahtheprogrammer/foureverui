@@ -482,3 +482,50 @@ footer p {
     font-size: 12px;
     color: #c6c6c6;
 }
+
+@media (max-width: 600px) {
+	.duocontainer {
+		display: block;
+		margin: 0 auto;
+		width: 100vw;
+		padding: 20px;
+	}
+	
+	.duocontainer .subcontainer {
+	    width: 80vw;
+	    height: 80vw;
+	    background-color: rgba(244, 244, 244, .6);  
+	    backdrop-filter: blur(5px);
+	    box-shadow: 0 0 10px rgba(200, 200, 200, .7);
+	    border-radius: 0px;
+	    margin: 3vw;
+	}
+	
+	.unknown {
+	    display: block;
+	    margin: 24px auto;
+	    width: 100%;
+	    height: auto;
+	}
+
+	footer .datacontainer {
+	    display: grid;
+	    grid-template-columns: 50% 50%;
+	    margin: 34px auto;
+	}
+
+	.maincontainer {
+	    width: 100vw;
+	    height: fit-content;
+	    margin: 0 auto;
+	    padding: 3vw;
+	    background-color: rgba(244, 244, 244, .6);  
+	    backdrop-filter: blur(5px);
+	    box-shadow: 0 0 10px rgba(200, 200, 200, .7);
+	    border-radius: 8px;
+	}
+
+	.maincontainer .datacontainer {
+	    display: block;
+	}
+}

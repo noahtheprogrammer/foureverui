@@ -35,8 +35,8 @@ var current = 'Raptoreum-TESTNET';
             .done(function (data) {
                 $.each(data.pools, function (index, value) {
                     $('#workers').text(formatSymbol(value.poolStats.connectedMiners, 0, ''));
-                    $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 1, 'H/s'));
-                    $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 1, 'H/s'));
+                    $('#pool_hr').text(formatSymbol(value.poolStats.poolHashrate, 1, ' '));
+                    $('#global_hr').text(formatSymbol(value.networkStats.networkHashrate, 1, ' '));
                     $('#global_diff').text(formatSymbol(value.networkStats.networkDifficulty, 1, ''));
                 });
             });
@@ -124,7 +124,7 @@ var current = 'Raptoreum-TESTNET';
 				}
 
                 $('#minershares').text(formatSymbol(data.pendingShares, 0, ''));
-                $('#minerhashrate').text(formatSymbol(workerHashRate, 2, 'H'));
+                $('#minerhashrate').text(formatSymbol(workerHashRate, 2, ' '));
                 $('#minerpending').text(formatSymbol(data.pendingBalance, 2, ''));
                 $('#minerrewarded').text(formatSymbol(data.totalPaid, 2, ''));
                 $('#minerlifetime').text(formatSymbol(data.pendingBalance + data.totalPaid, 2, ''));
